@@ -23,14 +23,16 @@ class Game: NSManagedObject {
     @NSManaged var trashScore: NSNumber
     @NSManaged var clues: NSSet
     
+    class func createGame(context: NSManagedObjectContext) -> Game {
+        let newGame = NSEntityDescription.insertNewObjectForEntityForName("Game", inManagedObjectContext: context) as Game
+        let oldGames = self.readAllGames(context)
+        newGame.gameIndex = oldGames.count
+        return newGame
+    }
+    
     class func readAllGames(context: NSManagedObjectContext) -> Array<Game> {
         let entityDescription = NSEntityDescription.entityForName("Game", inManagedObjectContext: context)
-        var fetchRequest = NSFetchRequest()
-        fetchRequest.entity = entityDescription
-        
-        let lowIndex = 0
-        let predicate = NSPredicate(format: "gameIndex >= \(lowIndex)")
-        fetchRequest.predicate = predicate
+        var fetchRequest = NSFetchRequest(entityName: "Game")
         
         let sortDescriptor = NSSortDescriptor(key: "gameIndex", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
