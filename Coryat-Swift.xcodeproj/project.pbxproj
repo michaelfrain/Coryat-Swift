@@ -16,6 +16,9 @@
 		D31DF4401A8055D700AD6102 /* GameSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31DF43F1A8055D700AD6102 /* GameSelectionViewController.swift */; };
 		D31DF4481A819ED000AD6102 /* Clue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31DF4471A819ED000AD6102 /* Clue.swift */; };
 		D31DF44A1A819EF300AD6102 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31DF4491A819EF300AD6102 /* Game.swift */; };
+		D31DF44D1A8331E800AD6102 /* korinab.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D31DF44C1A8331E800AD6102 /* korinab.ttf */; };
+		D31DF44F1A8331F300AD6102 /* Korinna Regular BT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D31DF44E1A8331F300AD6102 /* Korinna Regular BT.ttf */; };
+		D31DF4511A83357400AD6102 /* GameSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31DF4501A83357400AD6102 /* GameSelectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +45,9 @@
 		D31DF43F1A8055D700AD6102 /* GameSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSelectionViewController.swift; sourceTree = "<group>"; };
 		D31DF4471A819ED000AD6102 /* Clue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clue.swift; sourceTree = SOURCE_ROOT; };
 		D31DF4491A819EF300AD6102 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = SOURCE_ROOT; };
+		D31DF44C1A8331E800AD6102 /* korinab.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = korinab.ttf; sourceTree = "<group>"; };
+		D31DF44E1A8331F300AD6102 /* Korinna Regular BT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Korinna Regular BT.ttf"; sourceTree = "<group>"; };
+		D31DF4501A83357400AD6102 /* GameSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSelectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +98,7 @@
 				D31DF4491A819EF300AD6102 /* Game.swift */,
 				D31C16E11A7811AF00DDF9B6 /* Supporting Files */,
 				D31DF43F1A8055D700AD6102 /* GameSelectionViewController.swift */,
+				D31DF4501A83357400AD6102 /* GameSelectionCell.swift */,
 			);
 			path = "Coryat-Swift";
 			sourceTree = "<group>";
@@ -99,6 +106,7 @@
 		D31C16E11A7811AF00DDF9B6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D31DF44B1A8331CC00AD6102 /* Fonts */,
 				D31C16E21A7811AF00DDF9B6 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -119,6 +127,15 @@
 				D31C16FB1A7811AF00DDF9B6 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D31DF44B1A8331CC00AD6102 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D31DF44E1A8331F300AD6102 /* Korinna Regular BT.ttf */,
+				D31DF44C1A8331E800AD6102 /* korinab.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,7 +218,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D31DF44F1A8331F300AD6102 /* Korinna Regular BT.ttf in Resources */,
 				D31C16EC1A7811AF00DDF9B6 /* Main.storyboard in Resources */,
+				D31DF44D1A8331E800AD6102 /* korinab.ttf in Resources */,
 				D31C16F11A7811AF00DDF9B6 /* LaunchScreen.xib in Resources */,
 				D31C16EE1A7811AF00DDF9B6 /* Images.xcassets in Resources */,
 			);
@@ -221,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D31DF4511A83357400AD6102 /* GameSelectionCell.swift in Sources */,
 				D31C16E41A7811AF00DDF9B6 /* AppDelegate.swift in Sources */,
 				D31DF4481A819ED000AD6102 /* Clue.swift in Sources */,
 				D31C16E71A7811AF00DDF9B6 /* Coryat_Swift.xcdatamodeld in Sources */,
