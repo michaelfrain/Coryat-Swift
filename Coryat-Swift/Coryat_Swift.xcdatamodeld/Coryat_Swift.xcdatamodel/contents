@@ -10,6 +10,7 @@
         <attribute name="correctResponses" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="finalResponseCorrect" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="gameDate" attributeType="Date" syncable="YES"/>
+        <attribute name="gameIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="gameType" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="incorrectResponses" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="noResponses" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -19,7 +20,7 @@
         <relationship name="clues" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Clue" inverseName="game" inverseEntity="Clue" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Game" positionX="-63" positionY="-18" width="128" height="193"/>
+        <element name="Game" positionX="-63" positionY="-18" width="128" height="208"/>
         <element name="Clue" positionX="196" positionY="59" width="128" height="103"/>
     </elements>
 </model>
