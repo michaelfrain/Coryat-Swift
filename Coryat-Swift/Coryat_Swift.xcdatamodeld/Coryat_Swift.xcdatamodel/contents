@@ -17,10 +17,10 @@
         <attribute name="score" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="trashCorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="trashScore" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <relationship name="clues" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Clue" inverseName="game" inverseEntity="Clue" syncable="YES"/>
+        <relationship name="clues" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Clue" inverseName="game" inverseEntity="Clue" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Game" positionX="-63" positionY="-18" width="128" height="208"/>
         <element name="Clue" positionX="196" positionY="59" width="128" height="103"/>
+        <element name="Game" positionX="-63" positionY="-18" width="128" height="208"/>
     </elements>
 </model>
