@@ -56,8 +56,8 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="lblGameDateType" destination="ZP9-ho-4wU" id="KLZ-lW-9U0"/>
-                                            <outlet property="lblGameStatus" destination="ewI-pf-z3T" id="btc-3j-2fa"/>
+                                            <outlet property="lblGameDateType" destination="ZP9-ho-4wU" id="9T9-AW-LT1"/>
+                                            <outlet property="lblGameStatus" destination="ewI-pf-z3T" id="AnN-IB-Xqa"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -89,6 +89,7 @@
 		D31C16E01A7811AF00DDF9B6 /* Coryat-Swift */ = {
 			isa = PBXGroup;
 			children = (
+				D39F1C181A88248D00513A44 /* Controllers */,
 				D39F1C0B1A881A0100513A44 /* Views */,
 				D39F1C0A1A88154B00513A44 /* Models */,
 				D31C16E31A7811AF00DDF9B6 /* AppDelegate.swift */,
@@ -97,7 +98,6 @@
 				D31C16EF1A7811AF00DDF9B6 /* LaunchScreen.xib */,
 				D31C16E51A7811AF00DDF9B6 /* Coryat_Swift.xcdatamodeld */,
 				D31C16E11A7811AF00DDF9B6 /* Supporting Files */,
-				D31DF43F1A8055D700AD6102 /* GameSelectionViewController.swift */,
 			);
 			path = "Coryat-Swift";
 			sourceTree = "<group>";
@@ -152,6 +152,14 @@
 				D31DF4501A83357400AD6102 /* GameSelectionCell.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		D39F1C181A88248D00513A44 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D31DF43F1A8055D700AD6102 /* GameSelectionViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
