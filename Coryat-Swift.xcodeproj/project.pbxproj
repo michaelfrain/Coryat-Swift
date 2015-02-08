@@ -89,16 +89,15 @@
 		D31C16E01A7811AF00DDF9B6 /* Coryat-Swift */ = {
 			isa = PBXGroup;
 			children = (
-				D31DF4471A819ED000AD6102 /* Clue.swift */,
+				D39F1C0B1A881A0100513A44 /* Views */,
+				D39F1C0A1A88154B00513A44 /* Models */,
 				D31C16E31A7811AF00DDF9B6 /* AppDelegate.swift */,
 				D31C16EA1A7811AF00DDF9B6 /* Main.storyboard */,
 				D31C16ED1A7811AF00DDF9B6 /* Images.xcassets */,
 				D31C16EF1A7811AF00DDF9B6 /* LaunchScreen.xib */,
 				D31C16E51A7811AF00DDF9B6 /* Coryat_Swift.xcdatamodeld */,
-				D39F1C071A8713CD00513A44 /* Game.swift */,
 				D31C16E11A7811AF00DDF9B6 /* Supporting Files */,
 				D31DF43F1A8055D700AD6102 /* GameSelectionViewController.swift */,
-				D31DF4501A83357400AD6102 /* GameSelectionCell.swift */,
 			);
 			path = "Coryat-Swift";
 			sourceTree = "<group>";
@@ -136,6 +135,23 @@
 				D31DF44C1A8331E800AD6102 /* korinab.ttf */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		D39F1C0A1A88154B00513A44 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D39F1C071A8713CD00513A44 /* Game.swift */,
+				D31DF4471A819ED000AD6102 /* Clue.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		D39F1C0B1A881A0100513A44 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D31DF4501A83357400AD6102 /* GameSelectionCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

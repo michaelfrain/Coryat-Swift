@@ -25,7 +25,7 @@ class Game: NSManagedObject {
 
     class func createGame(context: NSManagedObjectContext) -> Game {
         let newGame = NSEntityDescription.insertNewObjectForEntityForName("Game", inManagedObjectContext: context) as Game
-        let oldGames = self.readAllGames(context)
+        let oldGames = Game.readAllGames(context)
         newGame.gameIndex = oldGames.count
         return newGame
     }
