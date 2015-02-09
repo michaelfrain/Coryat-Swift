@@ -22,6 +22,10 @@ class Game: NSManagedObject {
     @NSManaged var trashCorrect: NSNumber
     @NSManaged var trashScore: NSNumber
     @NSManaged var clues: NSOrderedSet
+    
+    enum GameType {
+        case RegularPlay, TournamentOfChampions, CollegeTournament, TeenTournament, TeachersTournament, KidsWeek
+    }
 
     class func createGame(context: NSManagedObjectContext) -> Game {
         let newGame = NSEntityDescription.insertNewObjectForEntityForName("Game", inManagedObjectContext: context) as Game
@@ -40,5 +44,33 @@ class Game: NSManagedObject {
         let errorPointer = NSErrorPointer()
         let gameArray = context.executeFetchRequest(fetchRequest, error: errorPointer) as Array<Game>
         return gameArray
+    }
+    
+    func stringForEnum(gameType: GameType) -> String {
+        var typeString: String
+        
+        switch gameType {
+        case .RegularPlay:
+            typeString = "Regular Play"
+            
+        case .TournamentOfChampions:
+            typeString = "Tournament Of Champions"
+            
+        case .CollegeTournament:
+            typeString = "College Tournament"
+            
+        case .TeenTournament:
+            typeString = "Teen Tournament"
+            
+        case .TeachersTournament:
+            typeString = "Teachers Tournament"
+            
+        case .KidsWeek:
+            typeString = "Kids Week"
+            
+        default:
+            typeString = "Other"
+        }
+        return typeString
     }
 }

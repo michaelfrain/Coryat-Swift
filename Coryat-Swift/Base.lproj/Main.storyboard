@@ -8,6 +8,7 @@
             <string>KorinnaITCbyBT-Bold</string>
             <string>KorinnaITCbyBT-Bold</string>
             <string>KorinnaITCbyBT-Bold</string>
+            <string>KorinnaITCbyBT-Bold</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -61,6 +62,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="kW6-o1-eWv"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="h7X-S3-VE1"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rzU-GF-eXD">
                                 <rect key="frame" x="16" y="550" width="162" height="33"/>
@@ -68,6 +73,21 @@
                                 <state key="normal" title="CREATE NEW GAME">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Wwt-N2-0oB" kind="popoverPresentation" identifier="CreateGamePopoverSegue" popoverAnchorView="rzU-GF-eXD" id="IsV-cU-0y8">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CQH-6b-iug">
+                                <rect key="frame" x="480" y="550" width="104" height="33"/>
+                                <fontDescription key="fontDescription" name="KorinnaITCbyBT-Bold" family="Korinna BT" pointSize="17"/>
+                                <state key="normal" title="EDIT GAMES">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="editGames:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vdg-bt-Wr2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -76,6 +96,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="446" y="441"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="mYo-nh-JcU">
+            <objects>
+                <viewController id="Wwt-N2-0oB" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="l7a-F5-DBP"/>
+                        <viewControllerLayoutGuide type="bottom" id="DrG-rv-jHh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zQw-Nj-Z2C">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="600"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HUQ-Hl-cRs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="446" y="1113"/>
         </scene>
     </scenes>
     <resources>

@@ -19,6 +19,7 @@
 		D31DF44F1A8331F300AD6102 /* Korinna Regular BT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D31DF44E1A8331F300AD6102 /* Korinna Regular BT.ttf */; };
 		D31DF4511A83357400AD6102 /* GameSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31DF4501A83357400AD6102 /* GameSelectionCell.swift */; };
 		D39F1C081A8713CD00513A44 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39F1C071A8713CD00513A44 /* Game.swift */; };
+		D39F1C1A1A882AF700513A44 /* NewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39F1C191A882AF700513A44 /* NewGameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		D31DF44E1A8331F300AD6102 /* Korinna Regular BT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Korinna Regular BT.ttf"; sourceTree = "<group>"; };
 		D31DF4501A83357400AD6102 /* GameSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSelectionCell.swift; sourceTree = "<group>"; };
 		D39F1C071A8713CD00513A44 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = SOURCE_ROOT; };
+		D39F1C191A882AF700513A44 /* NewGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewGameViewController.swift; path = Controllers/NewGameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				D31DF43F1A8055D700AD6102 /* GameSelectionViewController.swift */,
+				D39F1C191A882AF700513A44 /* NewGameViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			files = (
 				D31DF4511A83357400AD6102 /* GameSelectionCell.swift in Sources */,
 				D31C16E41A7811AF00DDF9B6 /* AppDelegate.swift in Sources */,
+				D39F1C1A1A882AF700513A44 /* NewGameViewController.swift in Sources */,
 				D31DF4481A819ED000AD6102 /* Clue.swift in Sources */,
 				D39F1C081A8713CD00513A44 /* Game.swift in Sources */,
 				D31C16E71A7811AF00DDF9B6 /* Coryat_Swift.xcdatamodeld in Sources */,
