@@ -48,6 +48,8 @@ class GameSelectionViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         let game = self.allGames[indexPath.row]
-        
+        let selectionCell = GameSelectionCell.cellForTableView(tableView, withGameDateType: game.stringForEnum(game.gameType.integerValue), withGameStatus: "")
+        cell = selectionCell
+        return cell
     }
 }

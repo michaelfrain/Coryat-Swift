@@ -23,8 +23,8 @@ class Game: NSManagedObject {
     @NSManaged var trashScore: NSNumber
     @NSManaged var clues: NSOrderedSet
     
-    enum GameType {
-        case RegularPlay, TournamentOfChampions, CollegeTournament, TeenTournament, TeachersTournament, KidsWeek
+    enum GameType: Int {
+        case RegularPlay = 0, TournamentOfChampions, CollegeTournament, TeenTournament, TeachersTournament, KidsWeek
     }
 
     class func createGame(context: NSManagedObjectContext) -> Game {
@@ -46,10 +46,11 @@ class Game: NSManagedObject {
         return gameArray
     }
     
-    func stringForEnum(gameType: GameType) -> String {
+    func stringForEnum(gameRawValue: GameType.RawValue) -> String {
         var typeString: String
+        let gameEnumValue = GameType(rawValue: gameRawValue)
         
-        switch gameType {
+        switch gameEnumValue! {
         case .RegularPlay:
             typeString = "Regular Play"
             
