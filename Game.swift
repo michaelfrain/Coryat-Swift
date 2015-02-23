@@ -28,7 +28,7 @@ class Game: NSManagedObject {
     }
 
     class func createGame(context: NSManagedObjectContext) -> Game {
-        let newGame = NSEntityDescription.insertNewObjectForEntityForName("Game", inManagedObjectContext: context) as Game
+        let newGame = NSEntityDescription.insertNewObjectForEntityForName("Game", inManagedObjectContext: context) as! Game
         let oldGames = Game.readAllGames(context)
         newGame.gameIndex = oldGames.count
         return newGame
@@ -42,7 +42,7 @@ class Game: NSManagedObject {
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         let errorPointer = NSErrorPointer()
-        let gameArray = context.executeFetchRequest(fetchRequest, error: errorPointer) as Array<Game>
+        let gameArray = context.executeFetchRequest(fetchRequest, error: errorPointer) as! Array<Game>
         return gameArray
     }
     

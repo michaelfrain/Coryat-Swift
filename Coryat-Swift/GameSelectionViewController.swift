@@ -11,7 +11,7 @@ import UIKit
 class GameSelectionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var allGames: Array<Game> {
         let application = UIApplication.sharedApplication()
-        let delegate = application.delegate as AppDelegate
+        let delegate = application.delegate as! AppDelegate
         let moc = delegate.managedObjectContext
         let gameArray = Game.readAllGames(moc!)
         return gameArray
