@@ -39,6 +39,10 @@ class GameSelectionViewController: UIViewController, UITableViewDataSource, UITa
         
     }
     
+    @IBAction func unwindFromNewGamePopover(sender: UIStoryboardSegue!) {
+        
+    }
+    
     // MARK: - UITableViewDataSource and UITableViewDelegate Methods
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let rows = self.allGames.count
