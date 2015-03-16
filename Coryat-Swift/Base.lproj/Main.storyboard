@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7515.2" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7515.2" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7512"/>
     </dependencies>
@@ -47,13 +47,13 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="JANUARY 15, 2015 - TOURNAMENT OF CHAMPIONS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZP9-ho-4wU">
                                                             <rect key="frame" x="64" y="24" width="420" height="21"/>
                                                             <fontDescription key="fontDescription" name="KorinnaITCbyBT-Bold" family="Korinna BT" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$27400 - 35/1/24" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewI-pf-z3T">
                                                             <rect key="frame" x="207" y="55" width="134" height="21"/>
                                                             <fontDescription key="fontDescription" name="KorinnaITCbyBT-Bold" family="Korinna BT" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -127,6 +127,10 @@
                             </label>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fNd-gv-1Pw">
                                 <rect key="frame" x="161" y="242" width="423" height="162"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Wwt-N2-0oB" id="Y5y-WV-s2X"/>
+                                    <outlet property="delegate" destination="Wwt-N2-0oB" id="a9V-u6-vdl"/>
+                                </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6M-vz-x58">
                                 <rect key="frame" x="16" y="420" width="112" height="33"/>
@@ -135,13 +139,13 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="dSV-fl-0iG" kind="unwind" unwindAction="unwindFromNewGamePopover:" id="7fe-bw-Ke0"/>
+                                    <segue destination="dSV-fl-0iG" kind="unwind" identifier="UnwindNewGame" unwindAction="unwindFromNewGamePopover:" id="7fe-bw-Ke0"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GAME TYPE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dys-be-evg">
                                 <rect key="frame" x="16" y="312" width="90" height="21"/>
                                 <fontDescription key="fontDescription" name="KorinnaITCbyBT-Regular" family="Korinna BT" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -149,6 +153,10 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="469"/>
+                    <connections>
+                        <outlet property="datePicker" destination="Sjv-ty-wVh" id="9hn-bN-XU1"/>
+                        <outlet property="gameTypePicker" destination="fNd-gv-1Pw" id="7rT-7N-fWH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HUQ-Hl-cRs" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="dSV-fl-0iG" userLabel="Exit" sceneMemberID="exit"/>

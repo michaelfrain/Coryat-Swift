@@ -19,19 +19,17 @@ class GameSelectionViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "CreateGamePopoverSegue" {
+            
+        }
     }
     
     // MARK: - IBActions
@@ -40,7 +38,8 @@ class GameSelectionViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     @IBAction func unwindFromNewGamePopover(sender: UIStoryboardSegue!) {
-        
+        let sourceController = sender.sourceViewController as! NewGameViewController
+        NSLog("Game created!")
     }
     
     // MARK: - UITableViewDataSource and UITableViewDelegate Methods

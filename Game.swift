@@ -24,7 +24,7 @@ class Game: NSManagedObject {
     @NSManaged var clues: NSOrderedSet
     
     enum GameType: Int {
-        case RegularPlay = 0, TournamentOfChampions, CollegeTournament, TeenTournament, TeachersTournament, KidsWeek
+        case RegularPlay = 0, TournamentOfChampions, CollegeTournament, TeenTournament, TeachersTournament, KidsWeek, NumberOfGameTypes
     }
 
     class func createGame(context: NSManagedObjectContext) -> Game {
