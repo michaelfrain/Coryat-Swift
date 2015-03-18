@@ -14,10 +14,19 @@ class NewGameViewController: UIViewController {
     @IBOutlet var gameTypePicker: UIPickerView!
     
     var currentContext: NSManagedObjectContext!
+    var allGames: Array<Game>!
+    var newGame: Game!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.preferredContentSize = CGSize(width: 600, height: 469)
+        newGame = Game.createGame(currentContext)
+        newGame.gameIndex = NSNumber(integer: allGames.count + 1)
+        NSLog("Game \(newGame.gameIndex.integerValue) created")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,7 +37,13 @@ class NewGameViewController: UIViewController {
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "UnwindNewGame" {
-            
+            newGame.gameDate = datePicker.date
+            let error = NSErrorPointer()
+            if currentContext.save(error) == true {
+                NSLog("Game \(newGame.gameIndex) saved!")
+            } else {
+                NSLog("Game could not be saved!")
+            }
         }
     }
 }
@@ -43,12 +58,17 @@ extension NewGameViewController: UIPickerViewDataSource {
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return "Yes"
+        let gameType = Game.GameType(rawValue: row)
+        let typeString = newGame.stringForEnum(gameType!.hashValue)
+        return typeString
     }
 }
 
 extension NewGameViewController: UIPickerViewDelegate {
-    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let gameType = Game.GameType(rawValue: row)
+        newGame.gameType = NSNumber(integer: gameType!.hashValue)
+    }
 }
 
 extension NewGameViewController: UIPopoverPresentationControllerDelegate {

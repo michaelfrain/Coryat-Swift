@@ -8,7 +8,8 @@
 
 import UIKit
 
-class GameSelectionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class GameSelectionViewController: UIViewController {
+    @IBOutlet var gameTable: UITableView!
     var allGames: Array<Game> {
         let application = UIApplication.sharedApplication()
         let delegate = application.delegate as! AppDelegate
@@ -16,6 +17,9 @@ class GameSelectionViewController: UIViewController, UITableViewDataSource, UITa
         let gameArray = Game.readAllGames(moc!)
         return gameArray
     }
+    
+    var selectedIndex = 0
+    
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +32,18 @@ class GameSelectionViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "CreateGamePopoverSegue" {
+            let application = UIApplication.sharedApplication()
+            let delegate = application.delegate as! AppDelegate
+            let moc = delegate.managedObjectContext
+            
+            let destinationController = segue.destinationViewController as! NewGameViewController
+            destinationController.currentContext = moc
+            destinationController.allGames = allGames
+        } else if segue.identifier == "GameStartSegue" {
+            let currentGame = allGames[selectedIndex]
+            let destinationController = segue.destinationViewController as! CategoryViewController
+            destinationController.currentGame = currentGame
+        } else if segue.identifier == "GameContinueSegue" {
             
         }
     }
@@ -39,10 +55,11 @@ class GameSelectionViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBAction func unwindFromNewGamePopover(sender: UIStoryboardSegue!) {
         let sourceController = sender.sourceViewController as! NewGameViewController
-        NSLog("Game created!")
+        gameTable.reloadData()
     }
-    
-    // MARK: - UITableViewDataSource and UITableViewDelegate Methods
+}
+
+extension GameSelectionViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let rows = self.allGames.count
         return rows
@@ -51,8 +68,17 @@ class GameSelectionViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         let game = self.allGames[indexPath.row]
-        let selectionCell = GameSelectionCell.cellForTableView(tableView, withGameDateType: game.stringForEnum(game.gameType.integerValue), withGameStatus: "")
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "MMMM dd, YYYY"
+        let selectionCell = GameSelectionCell.cellForTableView(tableView, withGameDateType: "\(game.stringForEnum(game.gameType.integerValue).uppercaseString) - \(formatter.stringFromDate(game.gameDate).uppercaseString)", withGameStatus: "$\(game.score), \(game.correctResponses)/\(game.incorrectResponses)/\(game.noResponses)")
         cell = selectionCell
         return cell
+    }
+}
+
+extension GameSelectionViewController: UITableViewDelegate {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedIndex = indexPath.row
+        self.performSegueWithIdentifier("GameStartSegue", sender: self)
     }
 }
