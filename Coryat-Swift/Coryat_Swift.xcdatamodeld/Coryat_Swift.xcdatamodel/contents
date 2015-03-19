@@ -17,6 +17,7 @@
         <attribute name="incorrectArray" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="incorrectResponses" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="inProgress" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isFinished" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="isRound2" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="noAnswerArray" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="noResponses" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -27,6 +28,6 @@
     </entity>
     <elements>
         <element name="Clue" positionX="196" positionY="59" width="128" height="103"/>
-        <element name="Game" positionX="-63" positionY="-18" width="128" height="298"/>
+        <element name="Game" positionX="-63" positionY="-18" width="128" height="313"/>
     </elements>
 </model>

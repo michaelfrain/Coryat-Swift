@@ -72,7 +72,14 @@ extension GameSelectionViewController: UITableViewDataSource {
         let game = self.allGames[indexPath.row]
         let formatter = NSDateFormatter()
         formatter.dateFormat = "MMMM dd, YYYY"
-        let selectionCell = GameSelectionCell.cellForTableView(tableView, withGameDateType: "\(game.stringForEnum(game.gameType.integerValue).uppercaseString) - \(formatter.stringFromDate(game.gameDate).uppercaseString)", withGameStatus: "$\(game.score), \(game.correctResponses)/\(game.incorrectResponses)/\(game.noResponses)")
+        var statusString = "$\(game.score), \(game.correctResponses)/\(game.incorrectResponses)/\(game.noResponses)"
+        if !game.inProgress {
+            statusString += " (NEW)"
+        }
+        if game.isFinished {
+            statusString += " (FINISHED)"
+        }
+        let selectionCell = GameSelectionCell.cellForTableView(tableView, withGameDateType: "\(game.stringForEnum(game.gameType.integerValue).uppercaseString) - \(formatter.stringFromDate(game.gameDate).uppercaseString)", withGameStatus: statusString)
         cell = selectionCell
         return cell
     }

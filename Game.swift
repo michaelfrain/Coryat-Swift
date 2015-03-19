@@ -28,6 +28,7 @@ class Game: NSManagedObject {
     @NSManaged var incorrectArray: Array<Int>
     @NSManaged var noAnswerArray: Array<Int>
     @NSManaged var currentCategoryArray: Array<String>
+    @NSManaged var isFinished: Bool
     
     enum GameType: Int {
         case RegularPlay = 0, TournamentOfChampions, CollegeTournament, TeenTournament, TeachersTournament, KidsWeek, NumberOfGameTypes
