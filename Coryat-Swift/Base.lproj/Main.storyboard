@@ -9,6 +9,8 @@
             <string>KorinnaITCbyBT-Regular</string>
             <string>KorinnaITCbyBT-Regular</string>
             <string>KorinnaITCbyBT-Regular</string>
+            <string>KorinnaITCbyBT-Regular</string>
+            <string>KorinnaITCbyBT-Regular</string>
         </mutableArray>
         <mutableArray key="korinab.ttf">
             <string>KorinnaITCbyBT-Bold</string>
@@ -149,12 +151,141 @@
                     <view key="view" contentMode="scaleToFill" id="QMN-Pi-pXJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category 1" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aZn-fj-LfK">
+                                <rect key="frame" x="151" y="35" width="299" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="299" id="Gkt-ZA-NNP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="6mZ-xF-g0j" id="eXn-6h-CNq"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category 2" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bUD-BI-5Vf">
+                                <rect key="frame" x="151" y="135" width="299" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="299" id="SND-Gp-dUN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="6mZ-xF-g0j" id="dqo-ol-zkv"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category 3" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="goq-Nn-1UZ">
+                                <rect key="frame" x="151" y="235" width="299" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="299" id="4HW-E8-HRw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="6mZ-xF-g0j" id="LuS-Ko-ycG"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category 4" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2bD-Jm-tFS">
+                                <rect key="frame" x="151" y="335" width="299" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="299" id="Qtg-0u-W62"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="6mZ-xF-g0j" id="Aia-R7-l4e"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category 5" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Ua-DB-CiB">
+                                <rect key="frame" x="151" y="435" width="299" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="299" id="gSK-p6-XcT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="6mZ-xF-g0j" id="fRb-9z-gf8"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category 6" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2oX-Qm-1GO">
+                                <rect key="frame" x="151" y="535" width="299" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="299" id="0Qj-Er-A6G"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="6mZ-xF-g0j" id="CbY-WK-4Dv"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8b-1o-haC">
+                                <rect key="frame" x="504" y="562" width="80" height="30"/>
+                                <fontDescription key="fontDescription" name="KorinnaITCbyBT-Regular" family="Korinna BT" pointSize="15"/>
+                                <state key="normal" title="LET'S PLAY!">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="6bE-ot-w3K" kind="show" identifier="BeginGameSegue" id="azj-0Y-IU8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rju-O6-DmQ">
+                                <rect key="frame" x="16" y="562" width="66" height="30"/>
+                                <fontDescription key="fontDescription" name="KorinnaITCbyBT-Regular" family="Korinna BT" pointSize="15"/>
+                                <state key="normal" title="GO BACK">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="5Ua-DB-CiB" secondAttribute="centerX" constant="-0.5" id="4mc-TC-BXz"/>
+                            <constraint firstItem="2oX-Qm-1GO" firstAttribute="top" secondItem="5Ua-DB-CiB" secondAttribute="bottom" constant="70" id="6eR-eh-ki8"/>
+                            <constraint firstItem="aZn-fj-LfK" firstAttribute="top" secondItem="YKZ-I5-h1j" secondAttribute="bottom" constant="15" id="Cl0-rP-xT5"/>
+                            <constraint firstAttribute="centerX" secondItem="aZn-fj-LfK" secondAttribute="centerX" constant="-0.5" id="E0p-WC-lUY"/>
+                            <constraint firstAttribute="centerX" secondItem="2oX-Qm-1GO" secondAttribute="centerX" constant="-0.5" id="GgT-B5-h6r"/>
+                            <constraint firstItem="cpw-uk-5eY" firstAttribute="top" secondItem="d8b-1o-haC" secondAttribute="bottom" constant="8" id="J2R-5c-yxV"/>
+                            <constraint firstItem="goq-Nn-1UZ" firstAttribute="top" secondItem="bUD-BI-5Vf" secondAttribute="bottom" constant="70" id="OVp-Qz-pZM"/>
+                            <constraint firstItem="cpw-uk-5eY" firstAttribute="top" secondItem="Rju-O6-DmQ" secondAttribute="bottom" constant="8" id="PC2-WO-aeB"/>
+                            <constraint firstItem="d8b-1o-haC" firstAttribute="trailing" secondItem="QMN-Pi-pXJ" secondAttribute="trailingMargin" id="RgK-RA-EKv"/>
+                            <constraint firstItem="2bD-Jm-tFS" firstAttribute="top" secondItem="goq-Nn-1UZ" secondAttribute="bottom" constant="70" id="XBN-p6-bIn"/>
+                            <constraint firstAttribute="centerX" secondItem="goq-Nn-1UZ" secondAttribute="centerX" constant="-0.5" id="aua-B0-sQA"/>
+                            <constraint firstAttribute="centerX" secondItem="2bD-Jm-tFS" secondAttribute="centerX" constant="-0.5" id="dNe-NW-Xnw"/>
+                            <constraint firstItem="5Ua-DB-CiB" firstAttribute="top" secondItem="2bD-Jm-tFS" secondAttribute="bottom" constant="70" id="fLN-3v-1tj"/>
+                            <constraint firstAttribute="centerX" secondItem="bUD-BI-5Vf" secondAttribute="centerX" constant="-0.5" id="j0Q-Id-jrP"/>
+                            <constraint firstItem="bUD-BI-5Vf" firstAttribute="top" secondItem="aZn-fj-LfK" secondAttribute="bottom" constant="70" id="wu7-Hp-9NL"/>
+                            <constraint firstItem="Rju-O6-DmQ" firstAttribute="leading" secondItem="QMN-Pi-pXJ" secondAttribute="leadingMargin" id="xTq-qo-Luv"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="txtCategory1" destination="aZn-fj-LfK" id="1PD-ws-fcr"/>
+                        <outlet property="txtCategory2" destination="bUD-BI-5Vf" id="MDB-K1-Bpx"/>
+                        <outlet property="txtCategory3" destination="goq-Nn-1UZ" id="ANg-vS-ymm"/>
+                        <outlet property="txtCategory4" destination="2bD-Jm-tFS" id="qTY-B9-xXr"/>
+                        <outlet property="txtCategory5" destination="5Ua-DB-CiB" id="2hr-bh-PPl"/>
+                        <outlet property="txtCategory6" destination="2oX-Qm-1GO" id="ZKT-MF-LVc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8cr-1r-oUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1099" y="441"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="g2x-a5-8uk">
+            <objects>
+                <viewController id="6bE-ot-w3K" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="C3f-HA-uiE"/>
+                        <viewControllerLayoutGuide type="bottom" id="hWC-aJ-HYn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9wY-1d-rf9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ohq-3J-aOD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1734" y="441"/>
         </scene>
         <!--New Game View Controller-->
         <scene sceneID="mYo-nh-JcU">
