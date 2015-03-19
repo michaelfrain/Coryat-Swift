@@ -19,6 +19,10 @@ class CategoryViewController: UIViewController {
     
     var isRound2 = false
     
+    override func viewDidLoad() {
+        currentGame.currentCategoryArray = ["", "", "", "", "", ""]
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -30,14 +34,30 @@ class CategoryViewController: UIViewController {
         txtCategory6.text = ""
     }
     
-    var categoryArray = ["", "", "", "", "", ""]
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "BeginGameSegue" {
+            let destinationController = segue.destinationViewController as! GameBoardViewController
+            destinationController.currentGame = currentGame
+            currentGame.inProgress = true
+            if isRound2 == false {
+                destinationController.roundNumber = 1
+            } else {
+                destinationController.roundNumber = 2
+            }
+            currentGame.correctArray = []
+            currentGame.incorrectArray = []
+            currentGame.noAnswerArray = []
+        }
+    }
+    
+    @IBAction func unwindForRound2(sender: UIStoryboardSegue) {
+        isRound2 = true
+        let sourceController = sender.sourceViewController as! GameBoardViewController
+        currentGame = sourceController.currentGame
+        currentGame.isRound2 = true
     }
 }
 
@@ -45,22 +65,22 @@ extension CategoryViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
         switch textField {
         case txtCategory1:
-            categoryArray[0] = txtCategory1.text
+            currentGame.currentCategoryArray[0] = txtCategory1.text
             
         case txtCategory2:
-            categoryArray[1] = txtCategory2.text
+            currentGame.currentCategoryArray[1] = txtCategory2.text
             
         case txtCategory3:
-            categoryArray[2] = txtCategory3.text
+            currentGame.currentCategoryArray[2] = txtCategory3.text
             
         case txtCategory4:
-            categoryArray[3] = txtCategory4.text
+            currentGame.currentCategoryArray[3] = txtCategory4.text
             
         case txtCategory5:
-            categoryArray[4] = txtCategory5.text
+            currentGame.currentCategoryArray[4] = txtCategory5.text
             
         case txtCategory6:
-            categoryArray[5] = txtCategory6.text
+            currentGame.currentCategoryArray[5] = txtCategory6.text
             
         default:
             return

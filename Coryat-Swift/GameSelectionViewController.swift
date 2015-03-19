@@ -43,8 +43,10 @@ class GameSelectionViewController: UIViewController {
             let currentGame = allGames[selectedIndex]
             let destinationController = segue.destinationViewController as! CategoryViewController
             destinationController.currentGame = currentGame
-        } else if segue.identifier == "GameContinueSegue" {
-            
+        } else if segue.identifier == "ResumeGameSegue" {
+            let destinationController = segue.destinationViewController as! GameBoardViewController
+            let currentGame = allGames[selectedIndex]
+            destinationController.currentGame = currentGame
         }
     }
     
@@ -79,6 +81,11 @@ extension GameSelectionViewController: UITableViewDataSource {
 extension GameSelectionViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedIndex = indexPath.row
-        self.performSegueWithIdentifier("GameStartSegue", sender: self)
+        let selectedGame = allGames[indexPath.row]
+        if selectedGame.inProgress {
+            self.performSegueWithIdentifier("ResumeGameSegue", sender: self)
+        } else {
+            self.performSegueWithIdentifier("GameStartSegue", sender: self)
+        }
     }
 }

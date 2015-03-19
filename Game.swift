@@ -22,6 +22,12 @@ class Game: NSManagedObject {
     @NSManaged var trashCorrect: NSNumber
     @NSManaged var trashScore: NSNumber
     @NSManaged var clues: NSOrderedSet
+    @NSManaged var inProgress: Bool
+    @NSManaged var isRound2: Bool
+    @NSManaged var correctArray: Array<Int>
+    @NSManaged var incorrectArray: Array<Int>
+    @NSManaged var noAnswerArray: Array<Int>
+    @NSManaged var currentCategoryArray: Array<String>
     
     enum GameType: Int {
         case RegularPlay = 0, TournamentOfChampions, CollegeTournament, TeenTournament, TeachersTournament, KidsWeek, NumberOfGameTypes

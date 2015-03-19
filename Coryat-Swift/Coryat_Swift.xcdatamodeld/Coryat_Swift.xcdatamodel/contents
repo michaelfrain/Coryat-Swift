@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7517.1" systemVersion="14C1510" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Clue" representedClassName="" syncable="YES">
+    <entity name="Clue" representedClassName="Coryat_Swift.Clue" syncable="YES">
         <attribute name="result" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="selectionOrder" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="value" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="clues" inverseEntity="Game" syncable="YES"/>
     </entity>
     <entity name="Game" representedClassName="Coryat_Swift.Game" syncable="YES">
+        <attribute name="correctArray" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="correctResponses" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="currentCategoryArray" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="finalResponseCorrect" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="gameDate" attributeType="Date" syncable="YES"/>
         <attribute name="gameIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="gameType" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="incorrectArray" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="incorrectResponses" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="inProgress" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isRound2" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="noAnswerArray" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="noResponses" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="score" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="trashCorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -21,6 +27,6 @@
     </entity>
     <elements>
         <element name="Clue" positionX="196" positionY="59" width="128" height="103"/>
-        <element name="Game" positionX="-63" positionY="-18" width="128" height="208"/>
+        <element name="Game" positionX="-63" positionY="-18" width="128" height="298"/>
     </elements>
 </model>
