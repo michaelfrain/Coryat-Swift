@@ -47,6 +47,10 @@ class GameSelectionViewController: UIViewController {
             let destinationController = segue.destinationViewController as! GameBoardViewController
             let currentGame = allGames[selectedIndex]
             destinationController.currentGame = currentGame
+        } else if segue.identifier == "GameReviewSegue" {
+            let destinationController = segue.destinationViewController as! GameSummaryViewController
+            let currentGame = allGames[selectedIndex]
+            destinationController.currentGame = currentGame
         }
     }
     
@@ -57,6 +61,10 @@ class GameSelectionViewController: UIViewController {
     
     @IBAction func unwindFromNewGamePopover(sender: UIStoryboardSegue!) {
         let sourceController = sender.sourceViewController as! NewGameViewController
+        gameTable.reloadData()
+    }
+    
+    @IBAction func unwindFromEndOfGame(sender: UIStoryboardSegue!) {
         gameTable.reloadData()
     }
 }
@@ -91,6 +99,8 @@ extension GameSelectionViewController: UITableViewDelegate {
         let selectedGame = allGames[indexPath.row]
         if selectedGame.inProgress {
             self.performSegueWithIdentifier("ResumeGameSegue", sender: self)
+        } else if selectedGame.isFinished {
+            self.performSegueWithIdentifier("GameReviewSegue", sender: self)
         } else {
             self.performSegueWithIdentifier("GameStartSegue", sender: self)
         }

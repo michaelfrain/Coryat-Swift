@@ -53,6 +53,9 @@ class GameBoardViewController: UIViewController {
             currentGame.correctArray = []
             currentGame.incorrectArray = []
             currentGame.noAnswerArray = []
+        } else if segue.identifier == "FinalJeopardySegue" {
+            let destinationController = segue.destinationViewController as! FinalJeopardyViewController
+            destinationController.currentGame = currentGame
         }
     }
 

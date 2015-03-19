@@ -20,6 +20,14 @@
             <string>KorinnaITCbyBT-Regular</string>
             <string>KorinnaITCbyBT-Regular</string>
             <string>KorinnaITCbyBT-Regular</string>
+            <string>KorinnaITCbyBT-Regular</string>
+            <string>KorinnaITCbyBT-Regular</string>
+            <string>KorinnaITCbyBT-Regular</string>
+            <string>KorinnaITCbyBT-Regular</string>
+            <string>KorinnaITCbyBT-Regular</string>
+            <string>KorinnaITCbyBT-Regular</string>
+            <string>KorinnaITCbyBT-Regular</string>
+            <string>KorinnaITCbyBT-Regular</string>
         </mutableArray>
         <mutableArray key="Swiss 911 Extra Compressed.ttf">
             <string>Swiss911BT-ExtraCompressed</string>
@@ -148,6 +156,7 @@
                         <outlet property="gameTable" destination="RCd-ZR-MVu" id="Mev-mw-n3U"/>
                         <segue destination="6mZ-xF-g0j" kind="show" identifier="GameStartSegue" id="sjk-Ve-5ue"/>
                         <segue destination="6bE-ot-w3K" kind="show" identifier="ResumeGameSegue" id="Knf-6w-4yr"/>
+                        <segue destination="Y0E-Cd-Ys0" kind="show" identifier="GameReviewSegue" id="cw3-fK-m7p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -382,6 +391,7 @@
                         <outlet property="endRound" destination="FpI-Q6-U2G" id="wpT-8U-Xs2"/>
                         <outlet property="gameBoard" destination="aUZ-wO-WVt" id="MI4-9W-S9n"/>
                         <segue destination="p4c-5h-PD3" kind="presentation" identifier="CellSelectionSegue" modalPresentationStyle="formSheet" modalTransitionStyle="flipHorizontal" id="4Ai-bn-HJw"/>
+                        <segue destination="O8x-e1-BW1" kind="show" identifier="FinalJeopardySegue" id="gUz-F9-WIR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ohq-3J-aOD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -533,6 +543,120 @@
             </objects>
             <point key="canvasLocation" x="2410" y="441"/>
         </scene>
+        <!--Final Jeopardy View Controller-->
+        <scene sceneID="Ctq-l2-Iv3">
+            <objects>
+                <viewController id="O8x-e1-BW1" customClass="FinalJeopardyViewController" customModule="Coryat_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Tdz-sR-QeO"/>
+                        <viewControllerLayoutGuide type="bottom" id="LBg-Vf-8n7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fdE-E7-NtU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Final Jeopardy Category" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WuJ-8P-siq">
+                                <rect key="frame" x="159" y="28" width="282" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Final Jeopardy Response" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5MF-Du-vor">
+                                <rect key="frame" x="159" y="66" width="282" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQq-o7-Oh9">
+                                <rect key="frame" x="232" y="104" width="137" height="33"/>
+                                <fontDescription key="fontDescription" name="KorinnaITCbyBT-Regular" family="Korinna BT" pointSize="17"/>
+                                <state key="normal" title="LOCK RESPONSE">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgM-pf-RHV">
+                                <rect key="frame" x="159" y="148" width="78" height="33"/>
+                                <fontDescription key="fontDescription" name="KorinnaITCbyBT-Regular" family="Korinna BT" pointSize="17"/>
+                                <state key="normal" title="CORRECT">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pOq-MM-DFg">
+                                <rect key="frame" x="347" y="148" width="94" height="33"/>
+                                <fontDescription key="fontDescription" name="KorinnaITCbyBT-Regular" family="Korinna BT" pointSize="17"/>
+                                <state key="normal" title="INCORRECT">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="Y0E-Cd-Ys0" kind="show" identifier="GameSummarySegue" id="QcA-bo-Rov"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bbd-Kx-exf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3036" y="441"/>
+        </scene>
+        <!--Game Summary View Controller-->
+        <scene sceneID="lx3-wx-YEL">
+            <objects>
+                <viewController id="Y0E-Cd-Ys0" customClass="GameSummaryViewController" customModule="Coryat_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Uey-SN-nVB"/>
+                        <viewControllerLayoutGuide type="bottom" id="ftD-TO-SWX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Lvt-hl-9co">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FINAL RESULTS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRH-Wy-a4N">
+                                <rect key="frame" x="200" y="28" width="200" height="34"/>
+                                <fontDescription key="fontDescription" name="KorinnaITCbyBT-Regular" family="Korinna BT" pointSize="28"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SCORE: $28500 ($2800 TRASH)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vms-J9-KA7">
+                                <rect key="frame" x="101" y="88" width="398" height="34"/>
+                                <fontDescription key="fontDescription" name="KorinnaITCbyBT-Regular" family="Korinna BT" pointSize="28"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="33 CORRECT, 3 INCORRECT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zQo-k7-ONy">
+                                <rect key="frame" x="123" y="150" width="354" height="34"/>
+                                <fontDescription key="fontDescription" name="KorinnaITCbyBT-Regular" family="Korinna BT" pointSize="28"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FINAL JEOPARDY: CORRECT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AxS-jb-Hz0">
+                                <rect key="frame" x="120" y="213" width="361" height="34"/>
+                                <fontDescription key="fontDescription" name="KorinnaITCbyBT-Regular" family="Korinna BT" pointSize="28"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WbM-tT-Tdq">
+                                <rect key="frame" x="191" y="339" width="218" height="42"/>
+                                <fontDescription key="fontDescription" name="KorinnaITCbyBT-Regular" family="Korinna BT" pointSize="25"/>
+                                <state key="normal" title="SAVE AND RETURN">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="agm-zU-f0i" kind="unwind" identifier="UnwindEndGameSegue" unwindAction="unwindFromEndOfGame:" id="NIk-C6-jJm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="labelFinal" destination="AxS-jb-Hz0" id="nhZ-mH-5Vx"/>
+                        <outlet property="labelRecord" destination="zQo-k7-ONy" id="Nnk-9v-HgT"/>
+                        <outlet property="labelScore" destination="Vms-J9-KA7" id="ViX-1C-O5V"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iLA-jG-iad" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="agm-zU-f0i" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3709" y="441"/>
+        </scene>
         <!--New Game View Controller-->
         <scene sceneID="mYo-nh-JcU">
             <objects>
@@ -619,5 +743,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Knf-6w-4yr"/>
+        <segue reference="cw3-fK-m7p"/>
     </inferredMetricsTieBreakers>
 </document>
