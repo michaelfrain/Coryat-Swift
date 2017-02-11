@@ -11,7 +11,7 @@ import UIKit
 class GameSelectionViewController: UIViewController {
     @IBOutlet var gameTable: UITableView!
     var allGames: Array<Game> {
-        let application = UIApplication.sharedApplication()
+        let application = UIApplication.shared
         let delegate = application.delegate as! AppDelegate
         let moc = delegate.managedObjectContext
         let gameArray = Game.readAllGames(moc!)
@@ -30,55 +30,55 @@ class GameSelectionViewController: UIViewController {
     }
     
     // MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CreateGamePopoverSegue" {
-            let application = UIApplication.sharedApplication()
+            let application = UIApplication.shared
             let delegate = application.delegate as! AppDelegate
             let moc = delegate.managedObjectContext
             
-            let destinationController = segue.destinationViewController as! NewGameViewController
+            let destinationController = segue.destination as! NewGameViewController
             destinationController.currentContext = moc
             destinationController.allGames = allGames
         } else if segue.identifier == "GameStartSegue" {
             let currentGame = allGames[selectedIndex]
-            let destinationController = segue.destinationViewController as! CategoryViewController
+            let destinationController = segue.destination as! CategoryViewController
             destinationController.currentGame = currentGame
         } else if segue.identifier == "ResumeGameSegue" {
-            let destinationController = segue.destinationViewController as! GameBoardViewController
+            let destinationController = segue.destination as! GameBoardViewController
             let currentGame = allGames[selectedIndex]
             destinationController.currentGame = currentGame
         } else if segue.identifier == "GameReviewSegue" {
-            let destinationController = segue.destinationViewController as! GameSummaryViewController
+            let destinationController = segue.destination as! GameSummaryViewController
             let currentGame = allGames[selectedIndex]
             destinationController.currentGame = currentGame
         }
     }
     
     // MARK: - IBActions
-    @IBAction func editGames(sender: UIButton!) {
+    @IBAction func editGames(_ sender: UIButton!) {
         
     }
     
-    @IBAction func unwindFromNewGamePopover(sender: UIStoryboardSegue!) {
-        let sourceController = sender.sourceViewController as! NewGameViewController
+    @IBAction func unwindFromNewGamePopover(_ sender: UIStoryboardSegue!) {
+        let sourceController = sender.source as! NewGameViewController
         gameTable.reloadData()
     }
     
-    @IBAction func unwindFromEndOfGame(sender: UIStoryboardSegue!) {
+    @IBAction func unwindFromEndOfGame(_ sender: UIStoryboardSegue!) {
         gameTable.reloadData()
     }
 }
 
 extension GameSelectionViewController: UITableViewDataSource {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let rows = self.allGames.count
         return rows
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         let game = self.allGames[indexPath.row]
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "MMMM dd, YYYY"
         var statusString = "$\(game.score), \(game.correctResponses)/\(game.incorrectResponses)/\(game.noResponses)"
         if !game.inProgress {
@@ -87,22 +87,22 @@ extension GameSelectionViewController: UITableViewDataSource {
         if game.isFinished {
             statusString += " (FINISHED)"
         }
-        let selectionCell = GameSelectionCell.cellForTableView(tableView, withGameDateType: "\(game.stringForEnum(game.gameType.integerValue).uppercaseString) - \(formatter.stringFromDate(game.gameDate).uppercaseString)", withGameStatus: statusString)
+        let selectionCell = GameSelectionCell.cellForTableView(tableView, withGameDateType: "\(game.stringForEnum(game.gameType.intValue).uppercased()) - \(formatter.string(from: game.gameDate).uppercased())", withGameStatus: statusString)
         cell = selectionCell
         return cell
     }
 }
 
 extension GameSelectionViewController: UITableViewDelegate {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
         let selectedGame = allGames[indexPath.row]
         if selectedGame.inProgress {
-            self.performSegueWithIdentifier("ResumeGameSegue", sender: self)
+            self.performSegue(withIdentifier: "ResumeGameSegue", sender: self)
         } else if selectedGame.isFinished {
-            self.performSegueWithIdentifier("GameReviewSegue", sender: self)
+            self.performSegue(withIdentifier: "GameReviewSegue", sender: self)
         } else {
-            self.performSegueWithIdentifier("GameStartSegue", sender: self)
+            self.performSegue(withIdentifier: "GameStartSegue", sender: self)
         }
     }
 }

@@ -21,11 +21,11 @@ class NewGameViewController: UIViewController {
         super.viewDidLoad()
         self.preferredContentSize = CGSize(width: 600, height: 469)
         newGame = Game.createGame(currentContext)
-        newGame.gameIndex = NSNumber(integer: allGames.count + 1)
-        NSLog("Game \(newGame.gameIndex.integerValue) created")
+        newGame.gameIndex = NSNumber(value: allGames.count + 1 as Int)
+        NSLog("Game \(newGame.gameIndex.intValue) created")
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
 
@@ -35,29 +35,25 @@ class NewGameViewController: UIViewController {
     }
     
     // MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "UnwindNewGame" {
             newGame.gameDate = datePicker.date
-            let error = NSErrorPointer()
-            if currentContext.save(error) == true {
-                NSLog("Game \(newGame.gameIndex) saved!")
-            } else {
-                NSLog("Game could not be saved!")
-            }
+            let error: NSErrorPointer = nil
+            try? currentContext.save()
         }
     }
 }
 
 extension NewGameViewController: UIPickerViewDataSource {
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Game.GameType.NumberOfGameTypes.hashValue
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return Game.GameType.numberOfGameTypes.hashValue
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
         let gameType = Game.GameType(rawValue: row)
         let typeString = newGame.stringForEnum(gameType!.hashValue)
         return typeString
@@ -65,9 +61,9 @@ extension NewGameViewController: UIPickerViewDataSource {
 }
 
 extension NewGameViewController: UIPickerViewDelegate {
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let gameType = Game.GameType(rawValue: row)
-        newGame.gameType = NSNumber(integer: gameType!.hashValue)
+        newGame.gameType = NSNumber(value: gameType!.hashValue as Int)
     }
 }
 

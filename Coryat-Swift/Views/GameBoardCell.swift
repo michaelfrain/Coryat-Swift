@@ -19,8 +19,8 @@ class GameBoardCell: UICollectionViewCell {
     
     var alreadySelected = false
     
-    class func cellForCollectionView(collectionView: UICollectionView, indexPath: NSIndexPath, cellValue: String) -> GameBoardCell {
-        var newCell: GameBoardCell = collectionView.dequeueReusableCellWithReuseIdentifier("GameBoardCell", forIndexPath: indexPath) as! GameBoardCell
+    class func cellForCollectionView(_ collectionView: UICollectionView, indexPath: IndexPath, cellValue: String) -> GameBoardCell {
+        var newCell: GameBoardCell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameBoardCell", for: indexPath) as! GameBoardCell
         
         newCell.cellValueString = cellValue
         

@@ -36,15 +36,11 @@ class GameSummaryViewController: UIViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let error = NSErrorPointer()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let error: NSErrorPointer = nil
         currentGame.inProgress = false
         currentGame.isRound2 = false
         currentGame.isFinished = true
-        if currentGame.managedObjectContext!.save(error) {
-            NSLog("Game finalized!")
-        } else {
-            NSLog("Game not finalized!")
-        }
+        try? currentGame.managedObjectContext!.save()
     }
 }

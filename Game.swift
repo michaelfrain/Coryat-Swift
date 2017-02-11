@@ -13,7 +13,7 @@ class Game: NSManagedObject {
 
     @NSManaged var correctResponses: NSNumber
     @NSManaged var finalResponseCorrect: NSNumber
-    @NSManaged var gameDate: NSDate
+    @NSManaged var gameDate: Date
     @NSManaged var gameIndex: NSNumber
     @NSManaged var gameType: NSNumber
     @NSManaged var incorrectResponses: NSNumber
@@ -31,49 +31,47 @@ class Game: NSManagedObject {
     @NSManaged var isFinished: Bool
     
     enum GameType: Int {
-        case RegularPlay = 0, TournamentOfChampions, CollegeTournament, TeenTournament, TeachersTournament, KidsWeek, NumberOfGameTypes
+        case regularPlay = 0, tournamentOfChampions, collegeTournament, teenTournament, teachersTournament, kidsWeek, numberOfGameTypes
     }
 
-    class func createGame(context: NSManagedObjectContext) -> Game {
-        let newGame = NSEntityDescription.insertNewObjectForEntityForName("Game", inManagedObjectContext: context) as! Game
+    class func createGame(_ context: NSManagedObjectContext) -> Game {
+        let newGame = NSEntityDescription.insertNewObject(forEntityName: "Game", into: context) as! Game
         let oldGames = Game.readAllGames(context)
-        newGame.gameIndex = oldGames.count
+        newGame.gameIndex = NSNumber(value: oldGames.count)
         return newGame
     }
     
-    class func readAllGames(context: NSManagedObjectContext) -> Array<Game> {
-        let entityDescription = NSEntityDescription.entityForName("Game", inManagedObjectContext: context)
-        var fetchRequest = NSFetchRequest(entityName: "Game")
+    class func readAllGames(_ context: NSManagedObjectContext) -> Array<Game> {
+        let fetchRequest = NSFetchRequest<Game>(entityName: "Game")
         
         let sortDescriptor = NSSortDescriptor(key: "gameIndex", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
-        let errorPointer = NSErrorPointer()
-        let gameArray = context.executeFetchRequest(fetchRequest, error: errorPointer) as! Array<Game>
-        return gameArray
+        let gameArray = try? context.fetch(fetchRequest)
+        return gameArray!
     }
     
-    func stringForEnum(gameRawValue: GameType.RawValue) -> String {
+    func stringForEnum(_ gameRawValue: GameType.RawValue) -> String {
         var typeString: String
         let gameEnumValue = GameType(rawValue: gameRawValue)
         
         switch gameEnumValue! {
-        case .RegularPlay:
+        case .regularPlay:
             typeString = "Regular Play"
             
-        case .TournamentOfChampions:
+        case .tournamentOfChampions:
             typeString = "Tournament Of Champions"
             
-        case .CollegeTournament:
+        case .collegeTournament:
             typeString = "College Tournament"
             
-        case .TeenTournament:
+        case .teenTournament:
             typeString = "Teen Tournament"
             
-        case .TeachersTournament:
+        case .teachersTournament:
             typeString = "Teachers Tournament"
             
-        case .KidsWeek:
+        case .kidsWeek:
             typeString = "Kids Week"
             
         default:

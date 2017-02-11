@@ -23,7 +23,7 @@ class CategoryViewController: UIViewController {
         currentGame.currentCategoryArray = ["", "", "", "", "", ""]
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         txtCategory1.text = ""
@@ -37,9 +37,9 @@ class CategoryViewController: UIViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "BeginGameSegue" {
-            let destinationController = segue.destinationViewController as! GameBoardViewController
+            let destinationController = segue.destination as! GameBoardViewController
             destinationController.currentGame = currentGame
             currentGame.inProgress = true
             if isRound2 == false {
@@ -53,41 +53,41 @@ class CategoryViewController: UIViewController {
         }
     }
     
-    @IBAction func unwindForRound2(sender: UIStoryboardSegue) {
+    @IBAction func unwindForRound2(_ sender: UIStoryboardSegue) {
         isRound2 = true
-        let sourceController = sender.sourceViewController as! GameBoardViewController
+        let sourceController = sender.source as! GameBoardViewController
         currentGame = sourceController.currentGame
         currentGame.isRound2 = true
     }
 }
 
 extension CategoryViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField {
         case txtCategory1:
-            currentGame.currentCategoryArray[0] = txtCategory1.text
+            currentGame.currentCategoryArray[0] = txtCategory1.text!
             
         case txtCategory2:
-            currentGame.currentCategoryArray[1] = txtCategory2.text
+            currentGame.currentCategoryArray[1] = txtCategory2.text!
             
         case txtCategory3:
-            currentGame.currentCategoryArray[2] = txtCategory3.text
+            currentGame.currentCategoryArray[2] = txtCategory3.text!
             
         case txtCategory4:
-            currentGame.currentCategoryArray[3] = txtCategory4.text
+            currentGame.currentCategoryArray[3] = txtCategory4.text!
             
         case txtCategory5:
-            currentGame.currentCategoryArray[4] = txtCategory5.text
+            currentGame.currentCategoryArray[4] = txtCategory5.text!
             
         case txtCategory6:
-            currentGame.currentCategoryArray[5] = txtCategory6.text
+            currentGame.currentCategoryArray[5] = txtCategory6.text!
             
         default:
             return
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case txtCategory1:
             txtCategory2.becomeFirstResponder()

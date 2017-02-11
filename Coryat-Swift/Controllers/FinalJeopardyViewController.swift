@@ -27,37 +27,37 @@ class FinalJeopardyViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func lockAnswer(sender: UIButton) {
-        let alert = UIAlertController(title: "Wait!", message: "Once you lock your response, you cannot unlock it. Are you sure?", preferredStyle: .Alert)
-        let confirm = UIAlertAction(title: "OK", style: .Default, handler: {
-            self.textFieldResponse.enabled = false
-            self.buttonLockResponse.enabled = false
-            self.buttonCorrectResponse.enabled = true
-            self.buttonIncorrectResponse.enabled = true
+    @IBAction func lockAnswer(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Wait!", message: "Once you lock your response, you cannot unlock it. Are you sure?", preferredStyle: .alert)
+        let confirm = UIAlertAction(title: "OK", style: .default, handler: {
+            self.textFieldResponse.isEnabled = false
+            self.buttonLockResponse.isEnabled = false
+            self.buttonCorrectResponse.isEnabled = true
+            self.buttonIncorrectResponse.isEnabled = true
             return nil
         }())
-        let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(confirm)
         alert.addAction(cancel)
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
         
     }
     
-    @IBAction func setResponseValue(sender: UIButton) {
+    @IBAction func setResponseValue(_ sender: UIButton) {
         if sender == buttonCorrectResponse {
-            currentGame.finalResponseCorrect = NSNumber(bool: true)
+            currentGame.finalResponseCorrect = NSNumber(value: true as Bool)
         } else if sender == buttonIncorrectResponse {
-            currentGame.finalResponseCorrect = NSNumber(bool: false)
+            currentGame.finalResponseCorrect = NSNumber(value: false as Bool)
         }
-        self.performSegueWithIdentifier("GameSummarySegue", sender: self)
+        self.performSegue(withIdentifier: "GameSummarySegue", sender: self)
     }
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GameSummarySegue" {
-            let destinationController = segue.destinationViewController as! GameSummaryViewController
+            let destinationController = segue.destination as! GameSummaryViewController
             destinationController.currentGame = currentGame
         }
     }

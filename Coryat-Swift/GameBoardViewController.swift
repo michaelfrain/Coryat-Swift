@@ -17,7 +17,7 @@ class GameBoardViewController: UIViewController {
     
     var categoryArray: Array<String>!
     var roundNumber = 1
-    var selectedCell: NSIndexPath!
+    var selectedCell: IndexPath!
     
     var selectedClue = 0
 
@@ -27,9 +27,9 @@ class GameBoardViewController: UIViewController {
         currentScore.text = "Score: \(currentGame.score) - Record: \(currentGame.correctResponses) / \(currentGame.incorrectResponses) / \(currentGame.noResponses)"
         categoryArray = currentGame.currentCategoryArray
         if roundNumber == 1 {
-            endRound.setTitle("End Round 1", forState: .Normal)
+            endRound.setTitle("End Round 1", for: UIControlState())
         } else if roundNumber == 2 {
-            endRound.setTitle("End Round 2", forState: .Normal)
+            endRound.setTitle("End Round 2", for: UIControlState())
         } else {
             assert(false, "Only two rounds, something went wrong.")
         }
@@ -43,9 +43,9 @@ class GameBoardViewController: UIViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CellSelectionSegue" {
-            let destinationController = segue.destinationViewController as! ResultViewController
+            let destinationController = segue.destination as! ResultViewController
             destinationController.currentGame = currentGame
             destinationController.currentClueValue = selectedClue
             destinationController.cellIndex = selectedCell
@@ -54,12 +54,12 @@ class GameBoardViewController: UIViewController {
             currentGame.incorrectArray = []
             currentGame.noAnswerArray = []
         } else if segue.identifier == "FinalJeopardySegue" {
-            let destinationController = segue.destinationViewController as! FinalJeopardyViewController
+            let destinationController = segue.destination as! FinalJeopardyViewController
             destinationController.currentGame = currentGame
         }
     }
 
-    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegue(withIdentifier identifier: String?, sender: Any?) -> Bool {
         if identifier == "UnwindRoundSegue" && roundNumber == 2 {
             return false
         } else if identifier == "FinalJeopardySegue" && roundNumber == 1 {
@@ -68,37 +68,37 @@ class GameBoardViewController: UIViewController {
         return true
     }
     
-    @IBAction func unwindConfirmedClueResult(sender: UIStoryboardSegue) {
-        let sourceController = sender.sourceViewController as! ResultViewController
+    @IBAction func unwindConfirmedClueResult(_ sender: UIStoryboardSegue) {
+        let sourceController = sender.source as! ResultViewController
         let previousCellIndex = sourceController.cellIndex
-        let previousCell = gameBoard.cellForItemAtIndexPath(previousCellIndex) as! GameBoardCell
-        if sourceController.result == ResultViewController.LastResult.Incorrect {
-            previousCell.cellValueLabel.backgroundColor = UIColor.redColor()
-        } else if sourceController.result == ResultViewController.LastResult.Correct {
-            previousCell.cellValueLabel.backgroundColor = UIColor.greenColor()
+        let previousCell = gameBoard.cellForItem(at: previousCellIndex!) as! GameBoardCell
+        if sourceController.result == ResultViewController.LastResult.incorrect {
+            previousCell.cellValueLabel.backgroundColor = UIColor.red
+        } else if sourceController.result == ResultViewController.LastResult.correct {
+            previousCell.cellValueLabel.backgroundColor = UIColor.green
         } else {
-            previousCell.cellValueLabel.backgroundColor = UIColor.grayColor()
+            previousCell.cellValueLabel.backgroundColor = UIColor.gray
         }
         previousCell.alreadySelected = true
         currentGame = sourceController.currentGame
         currentScore.text = "Score: \(currentGame.score) - Record: \(currentGame.correctResponses) / \(currentGame.incorrectResponses) / \(currentGame.noResponses)"
     }
     
-    @IBAction func unwindCanceledClueResult(sender: UIStoryboardSegue) {
+    @IBAction func unwindCanceledClueResult(_ sender: UIStoryboardSegue) {
         
     }
 }
 
 extension GameBoardViewController: UICollectionViewDataSource {
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 36
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cellValueString: String
         if roundNumber == 1 {
             switch indexPath.item {
@@ -151,16 +151,16 @@ extension GameBoardViewController: UICollectionViewDataSource {
         let boardCell = GameBoardCell.cellForCollectionView(collectionView, indexPath: indexPath, cellValue: cellValueString)
         
         if currentGame.inProgress {
-            if find(currentGame.correctArray, indexPath.item) != nil {
-                boardCell.cellValueLabel.backgroundColor = UIColor.greenColor()
-                boardCell.alreadySelected = true
-            } else if find(currentGame.incorrectArray, indexPath.item) != nil {
-                boardCell.cellValueLabel.backgroundColor = UIColor.redColor()
-                boardCell.alreadySelected = true
-            } else if find(currentGame.noAnswerArray, indexPath.item) != nil {
-                boardCell.cellValueLabel.backgroundColor = UIColor.grayColor()
-                boardCell.alreadySelected = true
-            }
+//            if find(currentGame.correctArray, indexPath.item) != nil {
+//                boardCell.cellValueLabel.backgroundColor = UIColor.green
+//                boardCell.alreadySelected = true
+//            } else if find(currentGame.incorrectArray, indexPath.item) != nil {
+//                boardCell.cellValueLabel.backgroundColor = UIColor.red
+//                boardCell.alreadySelected = true
+//            } else if find(currentGame.noAnswerArray, indexPath.item) != nil {
+//                boardCell.cellValueLabel.backgroundColor = UIColor.gray
+//                boardCell.alreadySelected = true
+//            }
         }
         
         return boardCell
@@ -168,8 +168,8 @@ extension GameBoardViewController: UICollectionViewDataSource {
 }
 
 extension GameBoardViewController: UICollectionViewDelegate {
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        var boardCell = collectionView.cellForItemAtIndexPath(indexPath) as! GameBoardCell
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var boardCell = collectionView.cellForItem(at: indexPath) as! GameBoardCell
         if boardCell.alreadySelected == true {
             return
         }
@@ -217,7 +217,7 @@ extension GameBoardViewController: UICollectionViewDelegate {
         }
         selectedCell = indexPath
         if indexPath.item > 5 {
-            self.performSegueWithIdentifier("CellSelectionSegue", sender: self)
+            self.performSegue(withIdentifier: "CellSelectionSegue", sender: self)
         }
     }
 }
