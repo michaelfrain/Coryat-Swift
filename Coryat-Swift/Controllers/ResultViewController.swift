@@ -34,7 +34,7 @@ class ResultViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        segmentResult.addTarget(self, action: Selector(stringLiteral: "clueResultSelected:"), for: .valueChanged)
+        segmentResult.addTarget(self, action: #selector(ResultViewController.clueResultSelected(_:)), for: .valueChanged)
         labelCurrentScore.text = "Current total: $\(currentGame.score)"
         labelCurrentClue.text = "Current clue: $\(currentClueValue)"
         labelNewScore.isHidden = true
@@ -107,8 +107,6 @@ class ResultViewController: UIViewController {
                 currentGame.noResponses = NSNumber(value: currentGame.noResponses.intValue + 1 as Int)
                 currentGame.noAnswerArray.append(cellIndex.item)
             }
-            
-            let error: NSErrorPointer = nil
             try? currentGame.managedObjectContext!.save()
         }
     }

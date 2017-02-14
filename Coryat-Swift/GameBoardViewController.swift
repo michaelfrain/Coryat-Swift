@@ -152,16 +152,19 @@ extension GameBoardViewController: UICollectionViewDataSource {
         let boardCell = GameBoardCell.cellForCollectionView(collectionView, indexPath: indexPath, cellValue: cellValueString)
         
         if currentGame.inProgress {
-//            if find(currentGame.correctArray, indexPath.item) != nil {
-//                boardCell.cellValueLabel.backgroundColor = UIColor.green
-//                boardCell.alreadySelected = true
-//            } else if find(currentGame.incorrectArray, indexPath.item) != nil {
-//                boardCell.cellValueLabel.backgroundColor = UIColor.red
-//                boardCell.alreadySelected = true
-//            } else if find(currentGame.noAnswerArray, indexPath.item) != nil {
-//                boardCell.cellValueLabel.backgroundColor = UIColor.gray
-//                boardCell.alreadySelected = true
-//            }
+            if currentGame.correctArray.contains(indexPath.item) {
+                boardCell.cellValueLabel.backgroundColor = UIColor.green
+                boardCell.alreadySelected = true
+            } else if currentGame.incorrectArray.contains(indexPath.item) {
+                boardCell.cellValueLabel.backgroundColor = UIColor.red
+                boardCell.alreadySelected = true
+            } else if currentGame.noAnswerArray.contains(indexPath.item) {
+                boardCell.cellValueLabel.backgroundColor = UIColor.gray
+                boardCell.alreadySelected = true
+            } else {
+                boardCell.cellValueLabel.backgroundColor = UIColor(red: 0, green: 0.5, blue: 1, alpha: 1)
+                boardCell.alreadySelected = false
+            }
         }
         
         return boardCell
@@ -217,7 +220,21 @@ extension GameBoardViewController: UICollectionViewDelegate {
             }
         }
         selectedCell = indexPath
-        if indexPath.item > 5 {
+        if indexPath.item <= 5 {
+            let alert = UIAlertController(title: "Category Name", message: "Please type in the new category.", preferredStyle: .alert)
+            alert.addTextField(configurationHandler: nil)
+            let action = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                self.currentGame.currentCategoryArray[indexPath.row] = alert.textFields![0].text!
+            })
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alert.addAction(action)
+            alert.addAction(cancel)
+            present(alert, animated: true) {
+                DispatchQueue.main.async {
+                    collectionView.reloadData()
+                }
+            }
+        } else {
             self.performSegue(withIdentifier: "CellSelectionSegue", sender: self)
         }
     }
