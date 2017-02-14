@@ -11,6 +11,7 @@ import UIKit
 class GameSummaryViewController: UIViewController {
     var currentGame: Game!
     
+    @IBOutlet var labelResults: UILabel!
     @IBOutlet var labelScore: UILabel!
     @IBOutlet var labelRecord: UILabel!
     @IBOutlet var labelFinal: UILabel!
@@ -18,6 +19,9 @@ class GameSummaryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, YYYY"
+        labelResults.text = "FINAL RESULTS: \(formatter.string(from: currentGame.gameDate))"
         labelScore.text = "SCORE: $\(currentGame.score) ($\(currentGame.trashScore) TRASH)"
         labelRecord.text = "\(currentGame.correctResponses) CORRECT, \(currentGame.incorrectResponses) INCORRECT"
         var finalString = "FINAL JEOPARDY: "
@@ -37,7 +41,6 @@ class GameSummaryViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let error: NSErrorPointer = nil
         currentGame.inProgress = false
         currentGame.isRound2 = false
         currentGame.isFinished = true

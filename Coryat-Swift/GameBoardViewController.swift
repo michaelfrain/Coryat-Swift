@@ -61,6 +61,7 @@ class GameBoardViewController: UIViewController {
 
     override func shouldPerformSegue(withIdentifier identifier: String?, sender: Any?) -> Bool {
         if identifier == "UnwindRoundSegue" && roundNumber == 2 {
+            performSegue(withIdentifier: "FinalJeopardySegue", sender: self)
             return false
         } else if identifier == "FinalJeopardySegue" && roundNumber == 1 {
             return false
